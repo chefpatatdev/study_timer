@@ -15,11 +15,19 @@ namespace GUI_layer
         private TimeSpan currentTime = TimeSpan.Zero;
         bool running = false;
         String mode = "study";
+
+        public Settings settingsApp;
+        public Statistics statisticsApp;
+
         public GUI_studytimer()
         {
             InitializeComponent();
             currentTime = new TimeSpan(studytime.Value.Hour, studytime.Value.Minute, studytime.Value.Second);
             timedisplay.Text = currentTime.ToString(@"hh\:mm\:ss");
+            settingsApp = new Settings();
+            statisticsApp = new Statistics();
+            
+
         }
         private void startstop_Click(object sender, EventArgs e)
         {
@@ -43,6 +51,10 @@ namespace GUI_layer
             timedisplay.Text = currentTime.ToString(@"hh\:mm\:ss");
             if (currentTime == TimeSpan.Zero)
             {
+                if (settingsApp.AutoStartStudy)
+                {
+
+                }
                 if (mode == "study")
                 {
                     mode = "pause";
