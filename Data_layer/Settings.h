@@ -1,12 +1,15 @@
 #pragma once
 #include <string>
+#include <iostream>
+#include <fstream>
+#include "json/json.h"
+#include<direct.h>
 using namespace std;
 
 class Settings
 {
 public:
 	Settings();
-
 	void setStudeerTijd(int studeertijd);
 	void setPauzeTijd(int pauzetijd);
 	void setPathImage(string pathImage);
@@ -22,11 +25,14 @@ public:
 	bool getAutoStartStudy() const;
 
 private:
-	int studeertijd;
-	int pauzetijd;
-	string pathImage;
-	string pathSound;
-	bool autoStartBreak;
-	bool autoStartStudy;
+	void dump();
+	Json::Value json;
+	string path;
+	int studeertijd=25;
+	int pauzetijd=5;
+	string pathImage="";
+	string pathSound="";
+	bool autoStartBreak=true;
+	bool autoStartStudy=true;
 };
 
