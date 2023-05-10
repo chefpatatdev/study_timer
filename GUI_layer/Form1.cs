@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Media;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -54,6 +55,7 @@ namespace GUI_layer
                     updateScreen();
                     currentTime = new TimeSpan(studytime.Value.Hour, studytime.Value.Minute, studytime.Value.Second);
                 }
+                playSound();
                 timedisplay.Text = currentTime.ToString(@"hh\:mm\:ss");
             }
         }
@@ -109,6 +111,14 @@ namespace GUI_layer
             {
                 clock.Start();
                 startstop.Text = "stop";
+            }
+        }
+
+        private void playSound()
+        {
+            using (var soundPlayer = new SoundPlayer(@"c:\Windows\Media\notify.wav"))
+            {
+                soundPlayer.Play(); // can also use soundPlayer.PlaySync()
             }
         }
     }
