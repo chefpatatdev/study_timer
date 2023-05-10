@@ -17,7 +17,6 @@ Settings::Settings() {
 		this->autoStartStudy = json["autoStartStudy"].asBool();
 	}
 	else {
-		cout << "made";
 		this->json["studeertijd"] = getStudeerTijd();
 		this->json["pauzetijd"] = getPauzeTijd();
 		this->json["pathImage"] = getPathImage();
