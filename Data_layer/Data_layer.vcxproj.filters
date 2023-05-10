@@ -6,9 +6,21 @@
     <ClCompile Include="Statistics.cpp" />
     <ClCompile Include="SettingsWrapper.cpp" />
     <ClCompile Include="StatisticsWrapper.cpp" />
+    <ClCompile Include="jsoncpp.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Settings.h" />
     <ClInclude Include="Statistics.h" />
+    <ClInclude Include="json\json.h">
+      <Filter>json</Filter>
+    </ClInclude>
+    <ClInclude Include="json\json-forwards.h">
+      <Filter>json</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="json">
+      <UniqueIdentifier>{5fea3e73-e14b-4638-98c8-be5297d47e83}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
 </Project>

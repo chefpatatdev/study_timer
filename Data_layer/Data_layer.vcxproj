@@ -139,6 +139,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="jsoncpp.cpp" />
     <ClCompile Include="Settings.cpp" />
     <ClCompile Include="SettingsWrapper.cpp" />
     <ClCompile Include="Source.cpp" />
@@ -146,6 +147,8 @@
     <ClCompile Include="StatisticsWrapper.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="json\json-forwards.h" />
+    <ClInclude Include="json\json.h" />
     <ClInclude Include="Settings.h" />
     <ClInclude Include="Statistics.h" />
   </ItemGroup>
