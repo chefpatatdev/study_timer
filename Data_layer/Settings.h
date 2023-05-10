@@ -5,7 +5,7 @@
 #include "json/json.h"
 #include<direct.h>
 using namespace std;
-
+#pragma warning(disable : 4996)
 class Settings
 {
 public:
