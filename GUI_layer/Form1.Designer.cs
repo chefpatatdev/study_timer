@@ -41,6 +41,8 @@ namespace GUI_layer
             this.settings = new System.Windows.Forms.Button();
             this.settingsmenu = new System.Windows.Forms.GroupBox();
             this.confirmsettings = new System.Windows.Forms.Button();
+            this.AUTO_START_BREAK_CHECK = new System.Windows.Forms.CheckBox();
+            this.AUTO_START_STUDY_CHECKBOX = new System.Windows.Forms.CheckBox();
             this.settingsmenu.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -50,9 +52,10 @@ namespace GUI_layer
             this.timedisplay.AutoSize = true;
             this.timedisplay.Font = new System.Drawing.Font("Comic Sans MS", 50.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.timedisplay.ForeColor = System.Drawing.Color.Transparent;
-            this.timedisplay.Location = new System.Drawing.Point(301, 161);
+            this.timedisplay.Location = new System.Drawing.Point(401, 198);
+            this.timedisplay.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.timedisplay.Name = "timedisplay";
-            this.timedisplay.Size = new System.Drawing.Size(326, 95);
+            this.timedisplay.Size = new System.Drawing.Size(406, 117);
             this.timedisplay.TabIndex = 0;
             this.timedisplay.Text = "00:00:00";
             // 
@@ -63,9 +66,10 @@ namespace GUI_layer
             // 
             // startstop
             // 
-            this.startstop.Location = new System.Drawing.Point(414, 286);
+            this.startstop.Location = new System.Drawing.Point(552, 352);
+            this.startstop.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.startstop.Name = "startstop";
-            this.startstop.Size = new System.Drawing.Size(75, 23);
+            this.startstop.Size = new System.Drawing.Size(100, 28);
             this.startstop.TabIndex = 1;
             this.startstop.Text = "start";
             this.startstop.UseVisualStyleBackColor = true;
@@ -74,29 +78,32 @@ namespace GUI_layer
             // studytime
             // 
             this.studytime.Format = System.Windows.Forms.DateTimePickerFormat.Time;
-            this.studytime.Location = new System.Drawing.Point(0, 15);
+            this.studytime.Location = new System.Drawing.Point(8, 18);
+            this.studytime.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.studytime.Name = "studytime";
             this.studytime.ShowUpDown = true;
-            this.studytime.Size = new System.Drawing.Size(89, 20);
+            this.studytime.Size = new System.Drawing.Size(120, 22);
             this.studytime.TabIndex = 2;
             this.studytime.Value = new System.DateTime(1753, 1, 1, 0, 0, 5, 0);
             // 
             // pausetime
             // 
             this.pausetime.Format = System.Windows.Forms.DateTimePickerFormat.Time;
-            this.pausetime.Location = new System.Drawing.Point(0, 40);
+            this.pausetime.Location = new System.Drawing.Point(8, 48);
+            this.pausetime.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pausetime.Name = "pausetime";
             this.pausetime.ShowUpDown = true;
-            this.pausetime.Size = new System.Drawing.Size(89, 20);
+            this.pausetime.Size = new System.Drawing.Size(120, 22);
             this.pausetime.TabIndex = 3;
             this.pausetime.Value = new System.DateTime(1753, 1, 1, 0, 0, 2, 0);
             // 
             // settings
             // 
             this.settings.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.settings.Location = new System.Drawing.Point(912, 0);
+            this.settings.Location = new System.Drawing.Point(1216, 0);
+            this.settings.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.settings.Name = "settings";
-            this.settings.Size = new System.Drawing.Size(75, 23);
+            this.settings.Size = new System.Drawing.Size(100, 28);
             this.settings.TabIndex = 4;
             this.settings.Text = "settings";
             this.settings.UseVisualStyleBackColor = true;
@@ -104,41 +111,77 @@ namespace GUI_layer
             // 
             // settingsmenu
             // 
+            this.settingsmenu.Controls.Add(this.AUTO_START_STUDY_CHECKBOX);
+            this.settingsmenu.Controls.Add(this.AUTO_START_BREAK_CHECK);
             this.settingsmenu.Controls.Add(this.confirmsettings);
             this.settingsmenu.Controls.Add(this.pausetime);
             this.settingsmenu.Controls.Add(this.studytime);
-            this.settingsmenu.Location = new System.Drawing.Point(885, 29);
+            this.settingsmenu.Location = new System.Drawing.Point(1173, 36);
+            this.settingsmenu.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.settingsmenu.Name = "settingsmenu";
-            this.settingsmenu.Size = new System.Drawing.Size(102, 210);
+            this.settingsmenu.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.settingsmenu.Size = new System.Drawing.Size(143, 258);
             this.settingsmenu.TabIndex = 5;
             this.settingsmenu.TabStop = false;
             this.settingsmenu.Text = "settings";
             this.settingsmenu.Visible = false;
+            this.settingsmenu.Enter += new System.EventHandler(this.settingsmenu_Enter);
             // 
             // confirmsettings
             // 
-            this.confirmsettings.Location = new System.Drawing.Point(6, 179);
+            this.confirmsettings.Location = new System.Drawing.Point(8, 220);
+            this.confirmsettings.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.confirmsettings.Name = "confirmsettings";
-            this.confirmsettings.Size = new System.Drawing.Size(75, 23);
+            this.confirmsettings.Size = new System.Drawing.Size(100, 28);
             this.confirmsettings.TabIndex = 4;
             this.confirmsettings.Text = "apply";
             this.confirmsettings.UseVisualStyleBackColor = true;
             this.confirmsettings.Click += new System.EventHandler(this.confirmsettings_Click);
             // 
-            // Form1
+            // AUTO_START_BREAK_CHECK
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AUTO_START_BREAK_CHECK.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.AUTO_START_BREAK_CHECK.AutoSize = true;
+            this.AUTO_START_BREAK_CHECK.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.AUTO_START_BREAK_CHECK.Location = new System.Drawing.Point(15, 78);
+            this.AUTO_START_BREAK_CHECK.Name = "AUTO_START_BREAK_CHECK";
+            this.AUTO_START_BREAK_CHECK.Size = new System.Drawing.Size(122, 20);
+            this.AUTO_START_BREAK_CHECK.TabIndex = 5;
+            this.AUTO_START_BREAK_CHECK.Text = "Auto start break";
+            this.AUTO_START_BREAK_CHECK.UseVisualStyleBackColor = true;
+            this.AUTO_START_BREAK_CHECK.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
+            // 
+            // AUTO_START_STUDY_CHECKBOX
+            // 
+            this.AUTO_START_STUDY_CHECKBOX.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.AUTO_START_STUDY_CHECKBOX.AutoSize = true;
+            this.AUTO_START_STUDY_CHECKBOX.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.AUTO_START_STUDY_CHECKBOX.Location = new System.Drawing.Point(18, 104);
+            this.AUTO_START_STUDY_CHECKBOX.Name = "AUTO_START_STUDY_CHECKBOX";
+            this.AUTO_START_STUDY_CHECKBOX.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.AUTO_START_STUDY_CHECKBOX.Size = new System.Drawing.Size(119, 20);
+            this.AUTO_START_STUDY_CHECKBOX.TabIndex = 6;
+            this.AUTO_START_STUDY_CHECKBOX.Text = "Auto start study";
+            this.AUTO_START_STUDY_CHECKBOX.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.AUTO_START_STUDY_CHECKBOX.UseVisualStyleBackColor = true;
+            this.AUTO_START_STUDY_CHECKBOX.CheckedChanged += new System.EventHandler(this.AUTO_START_STUDY_CHECKBOX_CheckedChanged);
+            // 
+            // GUI_studytimer
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Green;
-            this.ClientSize = new System.Drawing.Size(984, 461);
+            this.ClientSize = new System.Drawing.Size(1312, 567);
             this.Controls.Add(this.settingsmenu);
             this.Controls.Add(this.settings);
             this.Controls.Add(this.startstop);
             this.Controls.Add(this.timedisplay);
-            this.Name = "Form1";
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Name = "GUI_studytimer";
             this.Text = "Form1";
             this.TopMost = true;
             this.settingsmenu.ResumeLayout(false);
+            this.settingsmenu.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -156,6 +199,8 @@ namespace GUI_layer
         private Button settings;
         private GroupBox settingsmenu;
         private Button confirmsettings;
+        private CheckBox AUTO_START_BREAK_CHECK;
+        private CheckBox AUTO_START_STUDY_CHECKBOX;
     }
 }
 
