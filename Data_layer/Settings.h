@@ -32,7 +32,7 @@ private:
 	int pauzetijd=5;
 	string pathImage="";
 	string pathSound="";
-	bool autoStartBreak=true;
-	bool autoStartStudy=true;
+	bool autoStartBreak=false;
+	bool autoStartStudy=false;
 };
 
