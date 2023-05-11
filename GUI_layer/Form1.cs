@@ -8,6 +8,7 @@ using System.Media;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace GUI_layer
 {
@@ -28,7 +29,10 @@ namespace GUI_layer
             timedisplay.Text = currentTime.ToString(@"hh\:mm\:ss");
             settingsApp = new Settings();
             statisticsApp = new Statistics();
-
+            if(settingsApp.PathImage != "")
+            {
+                this.BackgroundImage = Image.FromFile(settingsApp.PathImage);
+            }
         }
         private void startstop_Click(object sender, EventArgs e)
         {
@@ -120,6 +124,29 @@ namespace GUI_layer
             {
                 soundPlayer.Play(); // can also use soundPlayer.PlaySync()
             }
+        }
+
+        private void fileSystemWatcher1_Changed(object sender, System.IO.FileSystemEventArgs e)
+        {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog openFileDialog1 = new OpenFileDialog();
+            openFileDialog1.Title = "Select File";
+            openFileDialog1.InitialDirectory = @"C:\";//--"C:\\";
+            openFileDialog1.Filter = "JPG (*.jpg)|*.jpg|PNG (*.png)|*.png";
+            openFileDialog1.FilterIndex = 2;
+            openFileDialog1.ShowDialog();
+            if (openFileDialog1.FileName != "")
+            { Console.WriteLine(openFileDialog1.FileName);
+                settingsApp.PathImage = openFileDialog1.FileName;
+                this.BackgroundImage = Image.FromFile(settingsApp.PathImage);
+
+            }
+            else
+            { Console.WriteLine( "You didn't select the file!"); }
         }
     }
 }
