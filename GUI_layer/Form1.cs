@@ -33,6 +33,11 @@ namespace GUI_layer
             {
                 this.BackgroundImage = Image.FromFile(settingsApp.PathImage);
             }
+
+            if(settingsApp.PathSound == "")
+            {
+                settingsApp.PathSound = @"c:\Windows\Media\notify.wav";
+            }
         }
         private void startstop_Click(object sender, EventArgs e)
         {
@@ -120,7 +125,7 @@ namespace GUI_layer
 
         private void playSound()
         {
-            using (var soundPlayer = new SoundPlayer(@"c:\Windows\Media\notify.wav"))
+            using (var soundPlayer = new SoundPlayer(settingsApp.PathSound))
             {
                 soundPlayer.Play(); // can also use soundPlayer.PlaySync()
             }
@@ -147,6 +152,23 @@ namespace GUI_layer
             }
             else
             { Console.WriteLine( "You didn't select the file!"); }
+        }
+
+        private void SELECT_SOUND_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog openFileDialog2 = new OpenFileDialog();
+            openFileDialog2.Title = "Select File";
+            openFileDialog2.InitialDirectory = @"C:\";//--"C:\\";
+            openFileDialog2.Filter = "WAV (*.wav)|*.wav";
+            openFileDialog2.FilterIndex = 2;
+            openFileDialog2.ShowDialog();
+            if (openFileDialog2.FileName != "")
+            {
+                Console.WriteLine(openFileDialog2.FileName);
+                settingsApp.PathSound = openFileDialog2.FileName;
+            }
+            else
+            { Console.WriteLine("You didn't select the file!"); }
         }
     }
 }

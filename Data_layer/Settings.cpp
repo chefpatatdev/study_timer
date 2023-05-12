@@ -52,7 +52,7 @@ void Settings::setPathImage(string path) {
 	dump();
 }
 void Settings::setPathSound(string path) {
-	this->pathSound = pathSound;
+	this->pathSound = path;
 	this->json["pathSound"] = this->pathSound;
 	this->dump();
 }

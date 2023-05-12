@@ -40,10 +40,11 @@ namespace GUI_layer
             this.pausetime = new System.Windows.Forms.DateTimePicker();
             this.settings = new System.Windows.Forms.Button();
             this.settingsmenu = new System.Windows.Forms.GroupBox();
+            this.SELECT_IMAGE_BUTTON = new System.Windows.Forms.Button();
             this.AUTO_START_STUDY_CHECKBOX = new System.Windows.Forms.CheckBox();
             this.AUTO_START_BREAK_CHECK = new System.Windows.Forms.CheckBox();
             this.confirmsettings = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.SELECT_SOUND = new System.Windows.Forms.Button();
             this.settingsmenu.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -112,7 +113,8 @@ namespace GUI_layer
             // 
             // settingsmenu
             // 
-            this.settingsmenu.Controls.Add(this.button1);
+            this.settingsmenu.Controls.Add(this.SELECT_SOUND);
+            this.settingsmenu.Controls.Add(this.SELECT_IMAGE_BUTTON);
             this.settingsmenu.Controls.Add(this.AUTO_START_STUDY_CHECKBOX);
             this.settingsmenu.Controls.Add(this.AUTO_START_BREAK_CHECK);
             this.settingsmenu.Controls.Add(this.confirmsettings);
@@ -128,6 +130,16 @@ namespace GUI_layer
             this.settingsmenu.Text = "settings";
             this.settingsmenu.Visible = false;
             this.settingsmenu.Enter += new System.EventHandler(this.settingsmenu_Enter);
+            // 
+            // SELECT_IMAGE_BUTTON
+            // 
+            this.SELECT_IMAGE_BUTTON.Location = new System.Drawing.Point(18, 130);
+            this.SELECT_IMAGE_BUTTON.Name = "SELECT_IMAGE_BUTTON";
+            this.SELECT_IMAGE_BUTTON.Size = new System.Drawing.Size(109, 26);
+            this.SELECT_IMAGE_BUTTON.TabIndex = 7;
+            this.SELECT_IMAGE_BUTTON.Text = "Select image";
+            this.SELECT_IMAGE_BUTTON.UseVisualStyleBackColor = true;
+            this.SELECT_IMAGE_BUTTON.Click += new System.EventHandler(this.button1_Click);
             // 
             // AUTO_START_STUDY_CHECKBOX
             // 
@@ -168,15 +180,15 @@ namespace GUI_layer
             this.confirmsettings.UseVisualStyleBackColor = true;
             this.confirmsettings.Click += new System.EventHandler(this.confirmsettings_Click);
             // 
-            // button1
+            // SELECT_SOUND
             // 
-            this.button1.Location = new System.Drawing.Point(18, 130);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(109, 26);
-            this.button1.TabIndex = 7;
-            this.button1.Text = "Select image";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.SELECT_SOUND.Location = new System.Drawing.Point(19, 162);
+            this.SELECT_SOUND.Name = "SELECT_SOUND";
+            this.SELECT_SOUND.Size = new System.Drawing.Size(109, 26);
+            this.SELECT_SOUND.TabIndex = 8;
+            this.SELECT_SOUND.Text = "Select sound";
+            this.SELECT_SOUND.UseVisualStyleBackColor = true;
+            this.SELECT_SOUND.Click += new System.EventHandler(this.SELECT_SOUND_Click);
             // 
             // GUI_studytimer
             // 
@@ -213,7 +225,8 @@ namespace GUI_layer
         private Button confirmsettings;
         private CheckBox AUTO_START_BREAK_CHECK;
         private CheckBox AUTO_START_STUDY_CHECKBOX;
-        private Button button1;
+        private Button SELECT_IMAGE_BUTTON;
+        private Button SELECT_SOUND;
     }
 }
 
