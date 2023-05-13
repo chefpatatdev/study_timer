@@ -40,12 +40,12 @@ namespace GUI_layer
             this.pausetime = new System.Windows.Forms.DateTimePicker();
             this.settings = new System.Windows.Forms.Button();
             this.settingsmenu = new System.Windows.Forms.GroupBox();
+            this.CLEAR_BACKGROUND = new System.Windows.Forms.Button();
             this.SELECT_SOUND = new System.Windows.Forms.Button();
             this.SELECT_IMAGE_BUTTON = new System.Windows.Forms.Button();
             this.AUTO_START_STUDY_CHECKBOX = new System.Windows.Forms.CheckBox();
             this.AUTO_START_BREAK_CHECK = new System.Windows.Forms.CheckBox();
             this.confirmsettings = new System.Windows.Forms.Button();
-            this.CLEAR_BACKGROUND = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.settingsmenu.SuspendLayout();
@@ -88,30 +88,26 @@ namespace GUI_layer
             // 
             // studytime
             // 
-            this.studytime.Format = System.Windows.Forms.DateTimePickerFormat.Time;
+            this.studytime.CustomFormat = "HH:mm";
+            this.studytime.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.studytime.Location = new System.Drawing.Point(5, 19);
             this.studytime.Margin = new System.Windows.Forms.Padding(4);
-            this.studytime.Format = DateTimePickerFormat.Custom;
-            this.studytime.CustomFormat = "HH:mm";
             this.studytime.Name = "studytime";
             this.studytime.ShowUpDown = true;
             this.studytime.Size = new System.Drawing.Size(123, 25);
             this.studytime.TabIndex = 2;
-            //this.studytime.Value = new System.DateTime(1753, 1, 1, 0, 0, 5, 0);
             this.studytime.ValueChanged += new System.EventHandler(this.studytime_ValueChanged);
             // 
             // pausetime
             // 
-            this.pausetime.Format = System.Windows.Forms.DateTimePickerFormat.Time;
+            this.pausetime.CustomFormat = "HH:mm";
+            this.pausetime.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.pausetime.Location = new System.Drawing.Point(5, 51);
             this.pausetime.Margin = new System.Windows.Forms.Padding(4);
-            this.pausetime.CustomFormat = "HH:mm";
-            this.pausetime.Format = DateTimePickerFormat.Custom;
             this.pausetime.Name = "pausetime";
             this.pausetime.ShowUpDown = true;
             this.pausetime.Size = new System.Drawing.Size(123, 25);
             this.pausetime.TabIndex = 3;
-            //this.pausetime.Value = new System.DateTime(1753, 1, 1, 0, 0, 2, 0);
             this.pausetime.ValueChanged += new System.EventHandler(this.pausetime_ValueChanged);
             // 
             // settings
@@ -149,6 +145,16 @@ namespace GUI_layer
             this.settingsmenu.Visible = false;
             this.settingsmenu.Enter += new System.EventHandler(this.settingsmenu_Enter);
             // 
+            // CLEAR_BACKGROUND
+            // 
+            this.CLEAR_BACKGROUND.Location = new System.Drawing.Point(7, 206);
+            this.CLEAR_BACKGROUND.Name = "CLEAR_BACKGROUND";
+            this.CLEAR_BACKGROUND.Size = new System.Drawing.Size(123, 28);
+            this.CLEAR_BACKGROUND.TabIndex = 9;
+            this.CLEAR_BACKGROUND.Text = "Clear background";
+            this.CLEAR_BACKGROUND.UseVisualStyleBackColor = true;
+            this.CLEAR_BACKGROUND.Click += new System.EventHandler(this.CLEAR_BACKGROUND_Click);
+            // 
             // SELECT_SOUND
             // 
             this.SELECT_SOUND.Location = new System.Drawing.Point(7, 172);
@@ -169,7 +175,7 @@ namespace GUI_layer
             this.SELECT_IMAGE_BUTTON.UseVisualStyleBackColor = true;
             this.SELECT_IMAGE_BUTTON.Click += new System.EventHandler(this.button1_Click);
             // 
-            // confirmsettings
+            // AUTO_START_STUDY_CHECKBOX
             // 
             this.AUTO_START_STUDY_CHECKBOX.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.AUTO_START_STUDY_CHECKBOX.AutoSize = true;
@@ -208,27 +214,17 @@ namespace GUI_layer
             this.confirmsettings.UseVisualStyleBackColor = true;
             this.confirmsettings.Click += new System.EventHandler(this.confirmsettings_Click);
             // 
-            // CLEAR_BACKGROUND
-            // 
-            this.CLEAR_BACKGROUND.Location = new System.Drawing.Point(7, 206);
-            this.CLEAR_BACKGROUND.Name = "CLEAR_BACKGROUND";
-            this.CLEAR_BACKGROUND.Size = new System.Drawing.Size(123, 28);
-            this.CLEAR_BACKGROUND.TabIndex = 9;
-            this.CLEAR_BACKGROUND.Text = "Clear background";
-            this.CLEAR_BACKGROUND.UseVisualStyleBackColor = true;
-            this.CLEAR_BACKGROUND.Click += new System.EventHandler(this.CLEAR_BACKGROUND_Click);
-            // 
             // label1
             // 
             this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(545, 221);
+            this.label1.Location = new System.Drawing.Point(525, 197);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(240, 31);
+            this.label1.Size = new System.Drawing.Size(240, 52);
             this.label1.TabIndex = 6;
-            this.label1.Text = "hier meot studyblocks met #";
+            this.label1.Text = "#blok";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
@@ -236,13 +232,14 @@ namespace GUI_layer
             // 
             this.label2.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label2.BackColor = System.Drawing.Color.Transparent;
-            this.label2.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(545, 197);
+            this.label2.Location = new System.Drawing.Point(503, 148);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(243, 24);
+            this.label2.Size = new System.Drawing.Size(296, 56);
             this.label2.TabIndex = 7;
-            this.label2.Text = "Hier komt of het \"Break\" of Study\" is";
+            this.label2.Text = "Time to study";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // GUI_studytimer

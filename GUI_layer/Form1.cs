@@ -44,7 +44,8 @@ namespace GUI_layer
             {
                 this.BackgroundImage = Image.FromFile(settingsApp.PathImage);
             }
-            label1.Text = "you have studied: " + statisticsApp.Blocks + " blocks";
+            label1.Text = "#" + statisticsApp.Blocks;
+            label2.Text = "Time to study!";
 
             if(settingsApp.PathSound == "")
             {
@@ -69,8 +70,8 @@ namespace GUI_layer
                 if (mode == "study")
                 {
                     statisticsApp.Blocks += 1;
-                    label1.Text = "you have studied: " + statisticsApp.Blocks + " blocks";
-
+                    label1.Text = "#" + statisticsApp.Blocks;
+                    
                     running = settingsApp.AutoStartBreak;
                     mode = "pause";
                     updateScreen();
@@ -124,11 +125,11 @@ namespace GUI_layer
         {
             if (mode == "study")
             {
-                this.BackColor = Color.Red;
+                label2.Text = "Time to study!";
             }
             else if (mode == "pause")
             {
-                this.BackColor = Color.Blue;
+                label2.Text = "Time for a break!";
             }
             if (!running)
             {
