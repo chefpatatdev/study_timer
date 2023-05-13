@@ -15,17 +15,9 @@ namespace GUI_layer
         [DllImport("Data_layer.dll")]
         private static extern void DeleteStatistics(IntPtr statisticsPointer);
         [DllImport("Data_layer.dll")]
-        private static extern int GetDay(IntPtr settingsPointer);
+        private static extern int GetDate(IntPtr settingsPointer);
         [DllImport("Data_layer.dll")]
-        private static extern void SetDay(IntPtr settingsPointer, int day);
-        [DllImport("Data_layer.dll")]
-        private static extern int GetMonth(IntPtr settingsPointer);
-        [DllImport("Data_layer.dll")]
-        private static extern void SetMonth(IntPtr settingsPointer, int month);
-        [DllImport("Data_layer.dll")]
-        private static extern int GetYear(IntPtr settingsPointer);
-        [DllImport("Data_layer.dll")]
-        private static extern void SetYear(IntPtr settingsPointer, int year);
+        private static extern void SetDate(IntPtr settingsPointer, int date);
         [DllImport("Data_layer.dll")]
         private static extern int GetBlocks(IntPtr settingsPointer);
         [DllImport("Data_layer.dll")]
@@ -43,39 +35,15 @@ namespace GUI_layer
             DeleteStatistics(_statisticsPointer);
         }
 
-        public int Day
+        public int Date
         {
             get
             {
-                return GetDay(_statisticsPointer);
+                return GetDate(_statisticsPointer);
             }
             set
             {
-                SetDay(_statisticsPointer, value);
-            }
-        }
-
-        public int Month
-        {
-            get
-            {
-                return GetMonth(_statisticsPointer);
-            }
-            set
-            {
-                SetMonth(_statisticsPointer, value);
-            }
-        }
-
-        public int Year
-        {
-            get
-            {
-                return GetYear(_statisticsPointer);
-            }
-            set
-            {
-                SetYear(_statisticsPointer, value);
+                SetDate(_statisticsPointer, value);
             }
         }
 

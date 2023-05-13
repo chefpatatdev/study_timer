@@ -4,18 +4,21 @@ Statistics::Statistics() {
 	char* folderpath = getenv("APPDATA");
 	this->path = folderpath;
 	this->path += "\\Statistics.json";
+	time_t result = time(nullptr);
+	int date = result / (24 * 60 * 60);
 	ifstream Statisticsfile(path, ifstream::binary);
 	if (Statisticsfile.good()) {
 		Statisticsfile >> json;
-		this->day = json["day"].asInt();
-		this->year = json["year"].asInt();
-		this->month = json["month"].asInt();
-		this->blocks = json["blocks"].asInt();
+		if (date == json["date"].asInt()) {
+			this->blocks = json["blocks"].asInt();
+		}
+		else {
+			setBlocks(0);
+		}
+		setDate(date);
 	}
 	else {
-		json["day"] = 0;
-		json["year"] = 0;
-		json["month"] = 0;
+		json["date"] = this->date;
 		json["blocks"] = 0;
 		ofstream out(this->path);
 		out << this->json;
@@ -26,40 +29,18 @@ Statistics::Statistics() {
 void Statistics::dump() {
 	ofstream out(this->path);
 	out << this->json;
-	cout << this->json;
 	out.close();
 }
-int Statistics::getDay() const {
-	return this->day;
+int Statistics::getDate() const {
+	return this->date;
 }
-
-int Statistics::getMonth() const {
-	return this->month;
-}
-
-int Statistics::getYear() const {
-	return this->year;
-}
-
 int Statistics::getBlocks() const {
 	return this->blocks;
 }
 
-void Statistics::setDay(int day) {
-	this->day = day;
-	this->json["day"] = day;
-	this->dump();
-}
-
-void Statistics::setMonth(int month) {
-	this->month = month;
-	this->json["month"] = month;
-	this->dump();
-}
-
-void Statistics::setYear(int year) {
-	this->year = year;
-	this->json["year"] = year;
+void Statistics::setDate(int date) {
+	this->date = date;
+	this->json["date"] = date;
 	this->dump();
 }
 
