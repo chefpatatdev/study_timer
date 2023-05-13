@@ -44,6 +44,7 @@ namespace GUI_layer
             {
                 this.BackgroundImage = Image.FromFile(settingsApp.PathImage);
             }
+            statistiek.Text = "you have studied: " + statisticsApp.Blocks + " blocks";
 
             if(settingsApp.PathSound == "")
             {
@@ -67,6 +68,9 @@ namespace GUI_layer
             {
                 if (mode == "study")
                 {
+                    statisticsApp.Blocks += 1;
+                    statistiek.Text = "you have studied: " + statisticsApp.Blocks + " blocks";
+
                     running = settingsApp.AutoStartBreak;
                     mode = "pause";
                     updateScreen();

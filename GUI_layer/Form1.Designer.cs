@@ -174,6 +174,7 @@ namespace GUI_layer
             this.AUTO_START_STUDY_CHECKBOX.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.AUTO_START_STUDY_CHECKBOX.AutoSize = true;
             this.AUTO_START_STUDY_CHECKBOX.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+
             this.AUTO_START_STUDY_CHECKBOX.Name = "AUTO_START_STUDY_CHECKBOX";
             this.AUTO_START_STUDY_CHECKBOX.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.AUTO_START_STUDY_CHECKBOX.Size = new System.Drawing.Size(130, 21);

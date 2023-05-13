@@ -1,48 +1,45 @@
 #include "Statistics.h"
 
 Statistics::Statistics() {
-	//set date from file
-	/*setDay(day);
-	setMonth(month);
-	setYear(year);
-	setBlocks(blocks);*/
-
-	//default values for testing purpouses
-	setDay(1);
-	setMonth(1);
-	setYear(2023);
-	setBlocks(4);
+	char* folderpath = getenv("APPDATA");
+	this->path = folderpath;
+	this->path += "\\studytimer";
+	int result = mkdir(path.c_str());
+	this->path += "\\Statistics.json";
+	time_t timenow = time(nullptr);
+	this->date = to_string(timenow / (24 * 60 * 60));
+	ifstream Statisticsfile(path, ifstream::binary);
+	if (Statisticsfile.good()) {
+		Statisticsfile >> json;
+		cout << json[this->date] << endl;
+		if (json[this->date] != NULL) {
+			this->blocks = json[this->date].asInt();
+		}
+		else {
+			setBlocks(0);
+		}
+	}
+	else {
+		json[this->date] = 0;
+		ofstream out(this->path);
+		out << this->json;
+		out.close();
+	}
+	Statisticsfile.close();
+}
+void Statistics::dump() {
+	ofstream out(this->path);
+	out << this->json;
+	out.close();
 }
 
-int Statistics::getDay() const{
-	return this->day;
-}
-
-int Statistics::getMonth() const{
-	return this->month;
-}
-
-int Statistics::getYear() const{
-	return this->year;
-}
-
-int Statistics::getBlocks() const{
+int Statistics::getBlocks() const {
 	return this->blocks;
 }
-
-void Statistics::setDay(int day) {
-	this->day = day;
-}
-
-void Statistics::setMonth(int month) {
-	this->month = month;
-}
-
-void Statistics::setYear(int year) {
-	this->year = year;
-}
-
 void Statistics::setBlocks(int blocks) {
 	this->blocks = blocks;
+	this->json[this->date] = blocks;
+	this->dump();
 }
+
 
