@@ -2,11 +2,12 @@
 
 Statistics::Statistics() {
 	char* folderpath = getenv("APPDATA");
-	strcat(folderpath, "\\studytimer");
 	this->path = folderpath;
+	this->path += "\\studytimer";
+	int result = mkdir(path.c_str());
 	this->path += "\\Statistics.json";
-	time_t result = time(nullptr);
-	this->date = to_string(result / (24 * 60 * 60));
+	time_t timenow = time(nullptr);
+	this->date = to_string(timenow / (24 * 60 * 60));
 	ifstream Statisticsfile(path, ifstream::binary);
 	if (Statisticsfile.good()) {
 		Statisticsfile >> json;
@@ -35,8 +36,9 @@ void Statistics::dump() {
 int Statistics::getBlocks() const {
 	return this->blocks;
 }
-int Statistics::getBlocks(string date) const {
-	return this->json[date].asInt();
+int Statistics::getBlocksDate(string dates) const {
+
+	return 0;
 }
 void Statistics::setBlocks(int blocks) {
 	this->blocks = blocks;

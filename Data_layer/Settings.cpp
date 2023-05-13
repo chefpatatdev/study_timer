@@ -2,9 +2,9 @@
 
 Settings::Settings() {
 	char* folderpath = getenv("APPDATA");
-	strcat(folderpath, "\\studytimer");
-	int result = mkdir(folderpath);
 	this->path = folderpath;
+	this->path += "\\studytimer";
+	int result = mkdir(path.c_str());
 	this->path += "\\Settings.json";
 	ifstream Settingsfile(path, ifstream::binary);
 	if (Settingsfile.good()) {

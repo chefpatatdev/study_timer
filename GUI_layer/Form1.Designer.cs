@@ -196,7 +196,6 @@ namespace GUI_layer
             this.Controls.Add(this.timedisplay);
             this.Name = "GUI_studytimer";
             this.Text = "Form1";
-            this.TopMost = true;
             this.settingsmenu.ResumeLayout(false);
             this.settingsmenu.PerformLayout();
             this.ResumeLayout(false);

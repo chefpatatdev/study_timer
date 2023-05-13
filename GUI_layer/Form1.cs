@@ -48,7 +48,7 @@ namespace GUI_layer
             {
                 if (mode == "study")
                 {
-                    statisticsApp.Blocks+=1;
+                    statisticsApp.Blocks += 1;
                     statistiek.Text = "you have studied: " + statisticsApp.Blocks + " blocks";
 
                     running = settingsApp.AutoStartBreak;

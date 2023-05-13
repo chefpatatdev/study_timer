@@ -12,7 +12,7 @@ public:
 	Statistics();
 	void setBlocks(int blocks);
 	int getBlocks() const;
-	int getBlocks(string date) const;
+	int getBlocksDate(string date) const;
 private:
 	void dump();
 	Json::Value json;
