@@ -97,7 +97,7 @@ namespace GUI_layer
             this.studytime.ShowUpDown = true;
             this.studytime.Size = new System.Drawing.Size(123, 25);
             this.studytime.TabIndex = 2;
-            this.studytime.Value = new System.DateTime(1753, 1, 1, 0, 0, 5, 0);
+            //this.studytime.Value = new System.DateTime(1753, 1, 1, 0, 0, 5, 0);
             this.studytime.ValueChanged += new System.EventHandler(this.studytime_ValueChanged);
             // 
             // pausetime
@@ -111,7 +111,7 @@ namespace GUI_layer
             this.pausetime.ShowUpDown = true;
             this.pausetime.Size = new System.Drawing.Size(123, 25);
             this.pausetime.TabIndex = 3;
-            this.pausetime.Value = new System.DateTime(1753, 1, 1, 0, 0, 2, 0);
+            //this.pausetime.Value = new System.DateTime(1753, 1, 1, 0, 0, 2, 0);
             this.pausetime.ValueChanged += new System.EventHandler(this.pausetime_ValueChanged);
             // 
             // settings
@@ -174,7 +174,7 @@ namespace GUI_layer
             this.AUTO_START_STUDY_CHECKBOX.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.AUTO_START_STUDY_CHECKBOX.AutoSize = true;
             this.AUTO_START_STUDY_CHECKBOX.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-
+            this.AUTO_START_STUDY_CHECKBOX.Location = new System.Drawing.Point(0, 110);
             this.AUTO_START_STUDY_CHECKBOX.Name = "AUTO_START_STUDY_CHECKBOX";
             this.AUTO_START_STUDY_CHECKBOX.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.AUTO_START_STUDY_CHECKBOX.Size = new System.Drawing.Size(130, 21);

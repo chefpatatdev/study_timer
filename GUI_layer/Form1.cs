@@ -44,7 +44,7 @@ namespace GUI_layer
             {
                 this.BackgroundImage = Image.FromFile(settingsApp.PathImage);
             }
-            statistiek.Text = "you have studied: " + statisticsApp.Blocks + " blocks";
+            label1.Text = "you have studied: " + statisticsApp.Blocks + " blocks";
 
             if(settingsApp.PathSound == "")
             {
@@ -69,7 +69,7 @@ namespace GUI_layer
                 if (mode == "study")
                 {
                     statisticsApp.Blocks += 1;
-                    statistiek.Text = "you have studied: " + statisticsApp.Blocks + " blocks";
+                    label1.Text = "you have studied: " + statisticsApp.Blocks + " blocks";
 
                     running = settingsApp.AutoStartBreak;
                     mode = "pause";
@@ -159,7 +159,7 @@ namespace GUI_layer
         private void pausetime_ValueChanged(object sender, EventArgs e)
         {
             TimeSpan span = pausetime.Value - new DateTime(1753, 1, 1);
-            settingsApp.StudeerTijd = (int)span.TotalMinutes;
+            settingsApp.PauzeTijd = (int)span.TotalMinutes;
         }
 
         private void fileSystemWatcher1_Changed(object sender, System.IO.FileSystemEventArgs e)
