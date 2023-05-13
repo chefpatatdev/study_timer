@@ -38,6 +38,10 @@ namespace GUI_layer
             {
                 settingsApp.PathSound = @"c:\Windows\Media\notify.wav";
             }
+            this.SetStyle(
+            ControlStyles.AllPaintingInWmPaint |
+            ControlStyles.DoubleBuffer,
+            true);
         }
         private void startstop_Click(object sender, EventArgs e)
         {
@@ -114,12 +118,12 @@ namespace GUI_layer
             if (!running)
             {
                 clock.Stop();
-                startstop.Text = "start";
+                startstop.Text = "Start";
             }
             else
             {
                 clock.Start();
-                startstop.Text = "stop";
+                startstop.Text = "Stop";
             }
         }
 
@@ -169,6 +173,33 @@ namespace GUI_layer
             }
             else
             { Console.WriteLine("You didn't select the file!"); }
+        }
+
+        private void timedisplay_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void CLEAR_BACKGROUND_Click(object sender, EventArgs e)
+        {
+            settingsApp.PathImage = "";
+            this.BackgroundImage = null;
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void GUI_studytimer_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
