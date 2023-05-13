@@ -16,8 +16,6 @@ namespace GUI_layer
         private static extern void DeleteStatistics(IntPtr statisticsPointer);
         [DllImport("Data_layer.dll")]
         private static extern int GetBlocks(IntPtr settingsPointer);
-        //[DllImport("Data_layer.dll")]
-        //private static extern int GetBlocksDate(IntPtr settingsPointer,string date);
         [DllImport("Data_layer.dll")]
         private static extern void SetBlocks(IntPtr settingsPointer, int blocks);
 

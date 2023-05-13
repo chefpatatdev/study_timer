@@ -36,10 +36,6 @@ void Statistics::dump() {
 int Statistics::getBlocks() const {
 	return this->blocks;
 }
-int Statistics::getBlocksDate(string dates) const {
-
-	return 0;
-}
 void Statistics::setBlocks(int blocks) {
 	this->blocks = blocks;
 	this->json[this->date] = blocks;
