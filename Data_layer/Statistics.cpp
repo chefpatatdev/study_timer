@@ -2,24 +2,24 @@
 
 Statistics::Statistics() {
 	char* folderpath = getenv("APPDATA");
+	strcat(folderpath, "\\studytimer");
 	this->path = folderpath;
 	this->path += "\\Statistics.json";
 	time_t result = time(nullptr);
-	int date = result / (24 * 60 * 60);
+	this->date = to_string(result / (24 * 60 * 60));
 	ifstream Statisticsfile(path, ifstream::binary);
 	if (Statisticsfile.good()) {
 		Statisticsfile >> json;
-		if (date == json["date"].asInt()) {
-			this->blocks = json["blocks"].asInt();
+		cout << json[this->date] << endl;
+		if (json[this->date] != NULL) {
+			this->blocks = json[this->date].asInt();
 		}
 		else {
 			setBlocks(0);
 		}
-		setDate(date);
 	}
 	else {
-		json["date"] = this->date;
-		json["blocks"] = 0;
+		json[this->date] = 0;
 		ofstream out(this->path);
 		out << this->json;
 		out.close();
@@ -31,22 +31,17 @@ void Statistics::dump() {
 	out << this->json;
 	out.close();
 }
-int Statistics::getDate() const {
-	return this->date;
-}
+
 int Statistics::getBlocks() const {
 	return this->blocks;
 }
-
-void Statistics::setDate(int date) {
-	this->date = date;
-	this->json["date"] = date;
-	this->dump();
+int Statistics::getBlocks(string date) const {
+	return this->json[date].asInt();
 }
-
 void Statistics::setBlocks(int blocks) {
 	this->blocks = blocks;
-	this->json["blocks"] = blocks;
+	this->json[this->date] = blocks;
 	this->dump();
 }
+
 

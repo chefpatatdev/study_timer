@@ -15,11 +15,9 @@ namespace GUI_layer
         [DllImport("Data_layer.dll")]
         private static extern void DeleteStatistics(IntPtr statisticsPointer);
         [DllImport("Data_layer.dll")]
-        private static extern int GetDate(IntPtr settingsPointer);
-        [DllImport("Data_layer.dll")]
-        private static extern void SetDate(IntPtr settingsPointer, int date);
-        [DllImport("Data_layer.dll")]
         private static extern int GetBlocks(IntPtr settingsPointer);
+        [DllImport("Data_layer.dll")]
+        private static extern int GetBlocks(IntPtr settingsPointer,string date);
         [DllImport("Data_layer.dll")]
         private static extern void SetBlocks(IntPtr settingsPointer, int blocks);
 
@@ -35,18 +33,6 @@ namespace GUI_layer
             DeleteStatistics(_statisticsPointer);
         }
 
-        public int Date
-        {
-            get
-            {
-                return GetDate(_statisticsPointer);
-            }
-            set
-            {
-                SetDate(_statisticsPointer, value);
-            }
-        }
-
         public int Blocks
         {
             get
@@ -57,6 +43,10 @@ namespace GUI_layer
             {
                 SetBlocks(_statisticsPointer, value);
             }
+        }
+        public int GetBlocksDate(string date)
+        {
+            return GetBlocks(_statisticsPointer,date);
         }
     }
 }

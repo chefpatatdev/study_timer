@@ -10,17 +10,14 @@ class Statistics
 {
 public:
 	Statistics();
-	void setDate(int date);
 	void setBlocks(int blocks);
-
-
-	int getDate() const;
 	int getBlocks() const;
+	int getBlocks(string date) const;
 private:
 	void dump();
 	Json::Value json;
 	string path;
-	int date;
+	string date;
 	int blocks; //amount of blocks studied
 };
 
