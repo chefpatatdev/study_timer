@@ -33,6 +33,7 @@ namespace GUI_layer
             {
                 this.BackgroundImage = Image.FromFile(settingsApp.PathImage);
             }
+            statistiek.Text = "you have studied: " + statisticsApp.Blocks + " blocks";
         }
         private void startstop_Click(object sender, EventArgs e)
         {
@@ -47,6 +48,9 @@ namespace GUI_layer
             {
                 if (mode == "study")
                 {
+                    statisticsApp.Blocks+=1;
+                    statistiek.Text = "you have studied: " + statisticsApp.Blocks + " blocks";
+
                     running = settingsApp.AutoStartBreak;
                     mode = "pause";
                     updateScreen();
@@ -148,5 +152,6 @@ namespace GUI_layer
             else
             { Console.WriteLine( "You didn't select the file!"); }
         }
+
     }
 }
