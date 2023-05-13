@@ -126,7 +126,12 @@ namespace GUI_layer
 
         private void playSound()
         {
-            using (var soundPlayer = new SoundPlayer(@"c:\Windows\Media\notify.wav"))
+            string soundpath = @"c:\Windows\Media\notify.wav";
+            if (settingsApp.PathSound != "")
+            {
+                soundpath=settingsApp.PathSound;
+            }
+            using (var soundPlayer = new SoundPlayer(soundpath))
             {
                 soundPlayer.Play(); // can also use soundPlayer.PlaySync()
             }

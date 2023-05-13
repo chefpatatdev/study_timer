@@ -75,7 +75,8 @@ namespace GUI_layer
             // 
             // studytime
             // 
-            this.studytime.Format = System.Windows.Forms.DateTimePickerFormat.Time;
+            this.studytime.Format = DateTimePickerFormat.Custom;
+            this.studytime.CustomFormat = "HH:mm";
             this.studytime.Location = new System.Drawing.Point(6, 15);
             this.studytime.Name = "studytime";
             this.studytime.ShowUpDown = true;
@@ -86,7 +87,8 @@ namespace GUI_layer
             // 
             // pausetime
             // 
-            this.pausetime.Format = System.Windows.Forms.DateTimePickerFormat.Time;
+            this.pausetime.Format = DateTimePickerFormat.Custom;
+            this.pausetime.CustomFormat = "HH:mm";
             this.pausetime.Location = new System.Drawing.Point(6, 39);
             this.pausetime.Name = "pausetime";
             this.pausetime.ShowUpDown = true;
