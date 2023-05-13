@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -25,6 +25,17 @@ namespace GUI_layer
         public GUI_studytimer()
         {
             InitializeComponent();
+
+            settingsApp = new Settings();
+            statisticsApp = new Statistics();
+            if (settingsApp.PathImage != "")
+            {
+                this.BackgroundImage = Image.FromFile(settingsApp.PathImage);
+            }
+            AUTO_START_BREAK_CHECK.Checked = settingsApp.AutoStartBreak;
+            AUTO_START_STUDY_CHECKBOX.Checked = settingsApp.AutoStartStudy;
+            studytime.Value = new DateTime(1753, 1, 1, TimeSpan.FromMinutes(settingsApp.StudeerTijd).Hours,TimeSpan.FromMinutes(settingsApp.StudeerTijd).Minutes, TimeSpan.FromMinutes(settingsApp.StudeerTijd).Seconds);
+            pausetime.Value = new DateTime(1753, 1, 1, TimeSpan.FromMinutes(settingsApp.PauzeTijd).Hours, TimeSpan.FromMinutes(settingsApp.PauzeTijd).Minutes, TimeSpan.FromMinutes(settingsApp.PauzeTijd).Seconds);
             currentTime = new TimeSpan(studytime.Value.Hour, studytime.Value.Minute, studytime.Value.Second);
             timedisplay.Text = currentTime.ToString(@"hh\:mm\:ss");
             settingsApp = new Settings();
@@ -133,6 +144,18 @@ namespace GUI_layer
             {
                 soundPlayer.Play(); // can also use soundPlayer.PlaySync()
             }
+        }
+
+        private void studytime_ValueChanged(object sender, EventArgs e)
+        {
+            TimeSpan span = studytime.Value - new DateTime(1753, 1, 1);
+            settingsApp.StudeerTijd = (int)span.TotalMinutes;
+        }
+
+        private void pausetime_ValueChanged(object sender, EventArgs e)
+        {
+            TimeSpan span = pausetime.Value - new DateTime(1753, 1, 1);
+            settingsApp.StudeerTijd = (int)span.TotalMinutes;
         }
 
         private void fileSystemWatcher1_Changed(object sender, System.IO.FileSystemEventArgs e)
