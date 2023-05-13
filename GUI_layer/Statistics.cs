@@ -42,9 +42,5 @@ namespace GUI_layer
                 SetBlocks(_statisticsPointer, value);
             }
         }
-        /*public int GetBlocksDate(string date)
-        {
-            return GetBlocksDate(_statisticsPointer,date);
-        }*/
     }
 }
