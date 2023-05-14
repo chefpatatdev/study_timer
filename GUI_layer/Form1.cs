@@ -113,7 +113,6 @@ namespace GUI_layer
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
             settingsApp.AutoStartBreak = AUTO_START_BREAK_CHECK.Checked;
-            Console.WriteLine(settingsApp.AutoStartBreak);
         }
 
         private void AUTO_START_STUDY_CHECKBOX_CheckedChanged(object sender, EventArgs e)
@@ -177,13 +176,12 @@ namespace GUI_layer
             openFileDialog1.FilterIndex = 2;
             openFileDialog1.ShowDialog();
             if (openFileDialog1.FileName != "")
-            { Console.WriteLine(openFileDialog1.FileName);
+            { 
                 settingsApp.PathImage = openFileDialog1.FileName;
                 this.BackgroundImage = Image.FromFile(settingsApp.PathImage);
 
             }
-            else
-            { Console.WriteLine( "You didn't select the file!"); }
+           
         }
 
         private void SELECT_SOUND_Click(object sender, EventArgs e)
@@ -196,11 +194,9 @@ namespace GUI_layer
             openFileDialog2.ShowDialog();
             if (openFileDialog2.FileName != "")
             {
-                Console.WriteLine(openFileDialog2.FileName);
                 settingsApp.PathSound = openFileDialog2.FileName;
             }
-            else
-            { Console.WriteLine("You didn't select the file!"); }
+ 
         }
 
         private void timedisplay_Click(object sender, EventArgs e)
