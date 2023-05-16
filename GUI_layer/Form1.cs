@@ -38,15 +38,12 @@ namespace GUI_layer
             pausetime.Value = new DateTime(1753, 1, 1, TimeSpan.FromMinutes(settingsApp.PauzeTijd).Hours, TimeSpan.FromMinutes(settingsApp.PauzeTijd).Minutes, TimeSpan.FromMinutes(settingsApp.PauzeTijd).Seconds);
             currentTime = new TimeSpan(studytime.Value.Hour, studytime.Value.Minute, studytime.Value.Second);
             timedisplay.Text = currentTime.ToString(@"hh\:mm\:ss");
-            settingsApp = new Settings();
-            statisticsApp = new Statistics();
             if(settingsApp.PathImage != "")
             {
                 this.BackgroundImage = Image.FromFile(settingsApp.PathImage);
             }
             label1.Text = "#" + statisticsApp.Blocks;
             label2.Text = "Time to study!";
-
             if(settingsApp.PathSound == "")
             {
                 settingsApp.PathSound = @"c:\Windows\Media\notify.wav";
@@ -64,29 +61,27 @@ namespace GUI_layer
         private void clock_Tick(object sender, System.EventArgs e)
         {
             currentTime = currentTime.Subtract(TimeSpan.FromSeconds(clock.Interval / 1000));
-            timedisplay.Text = currentTime.ToString(@"hh\:mm\:ss");
             if (currentTime == TimeSpan.Zero)
             {
                 if (mode == "study")
                 {
                     statisticsApp.Blocks += 1;
                     label1.Text = "#" + statisticsApp.Blocks;
-                    
                     running = settingsApp.AutoStartBreak;
                     mode = "pause";
-                    updateScreen();
                     currentTime = new TimeSpan(pausetime.Value.Hour, pausetime.Value.Minute, pausetime.Value.Second);
                 }
                 else
                 {
                     running = settingsApp.AutoStartStudy;
                     mode = "study";
-                    updateScreen();
                     currentTime = new TimeSpan(studytime.Value.Hour, studytime.Value.Minute, studytime.Value.Second);
                 }
+                updateScreen();
                 playSound();
-                timedisplay.Text = currentTime.ToString(@"hh\:mm\:ss");
+                
             }
+            timedisplay.Text = currentTime.ToString(@"hh\:mm\:ss");
         }
         private void settings_Click(object sender, EventArgs e)
         {
@@ -126,7 +121,7 @@ namespace GUI_layer
             {
                 label2.Text = "Time to study!";
             }
-            else if (mode == "pause")
+            else
             {
                 label2.Text = "Time for a break!";
             }
