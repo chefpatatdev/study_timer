@@ -26,12 +26,12 @@ public:
 
 private:
 	void dump();
-	Json::Value json;
-	string path;
-	int studeertijd=25;
+	Json::Value json; //JSON object
+	string path; //path for JSON file
+	int studeertijd=25; //default values as the pomodoro techinique describes
 	int pauzetijd=5;
-	string pathImage="";
-	string pathSound="";
+	string pathImage=""; //path for background image
+	string pathSound=""; //path for notification sound
 	bool autoStartBreak=false;
 	bool autoStartStudy=false;
 };

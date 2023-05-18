@@ -5,6 +5,8 @@ using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+//Starts up the forms application
+
 namespace GUI_layer
 {
     internal static class Program
@@ -12,7 +14,6 @@ namespace GUI_layer
         [STAThread]
         static void Main()
         {
-
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new GUI_studytimer());

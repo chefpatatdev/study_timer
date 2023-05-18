@@ -1,13 +1,28 @@
 #include "Settings.h"
 
-Settings::Settings() {
+/**
+*	Purpouse: Settings object with getters and setters. Also saving the data to a specific JSON file for settings.
+*	@author Ricky Da Silva Marques & Thomas Ocket
+*/
+
+/*
+	Constructor of the Settings class that creates a JSON file if it doenst exist yet. 
+	It gets predefined values from the header file if the JSON doesnt exist. If it does, 
+	it gets all the values from the Json and places them in the Settings object.
+*/
+
+Settings::Settings() { //Thomas Ocket
+	//Creates a path and folder for the JSON file to be placed in Appdata.
 	char* folderpath = getenv("APPDATA");
 	this->path = folderpath;
 	this->path += "\\studytimer";
 	int result = mkdir(path.c_str());
 	this->path += "\\Settings.json";
+
+	//Checks if Settings JSON file exists on that path, if so set the values from it to Settings object.
+	//Else create a JSON with default values.
 	ifstream Settingsfile(path, ifstream::binary);
-	if (Settingsfile.good()) {
+	if (Settingsfile.good()) { //reading contents of JSON file
 		Settingsfile >> json;
 		this->studeertijd = json["studeertijd"].asInt();
 		this->pauzetijd = json["pauzetijd"].asInt();
@@ -16,7 +31,7 @@ Settings::Settings() {
 		this->autoStartBreak = json["autoStartBreak"].asBool();
 		this->autoStartStudy = json["autoStartStudy"].asBool();
 	}
-	else {
+	else { //writing default values to JSON file
 		this->json["studeertijd"] = getStudeerTijd();
 		this->json["pauzetijd"] = getPauzeTijd();
 		this->json["pathImage"] = getPathImage();
@@ -30,16 +45,24 @@ Settings::Settings() {
 	Settingsfile.close();
 }
 
-void Settings::dump() {
+//Write the JSON object to the JSON file
+void Settings::dump() { //Thomas Ocket
 	ofstream out(this->path);
-	out << this->json;
+	out << this->json; //writes contents of JSON object to the JSON file
 	out.close();
 }
 
+/*
+	These functions behave in a simular way to a normal setter with the only differnce that after setting the object value,
+	the JSON file gets updated with the set value.
+
+	@author Ricky Da Silva Marques & Thomas Ocket
+*/
+
 void Settings::setStudeerTijd(int studeertijd) {
 	this->studeertijd = studeertijd;
-	this->json["studeertijd"] = this->studeertijd;
-	this->dump();
+	this->json["studeertijd"] = this->studeertijd; //write to JSON object
+	this->dump(); //export the JSON object to the file
 }
 void Settings::setPauzeTijd(int pauzetijd) {
 	this->pauzetijd = pauzetijd;
@@ -66,6 +89,11 @@ void Settings::setAutoStartStudy(bool autoStartStudy) {
 	this->json["autoStartStudy"] = this->autoStartStudy;
 	this->dump();
 }
+
+/*
+	readonly getters
+	@author Ricky Da Silva Marques
+*/
 
 int Settings::getStudeerTijd() const {
 	return this->studeertijd;

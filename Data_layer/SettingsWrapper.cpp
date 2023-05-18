@@ -2,12 +2,18 @@
 #include <comdef.h>
 #include <comutil.h>
 
+/**
+*	Purpouse: Export the functions to use the Settings object in C# with P/invoke. 
+*	@author Ricky Da Silva Marques
+*	@param *settings An object pointer given by C#
+*/
+
 extern "C" __declspec(dllexport) Settings* CreateSettings() {
-	return new Settings();
+	return new Settings(); //Returning the object pointer on creation of a new object
 }
 
 extern "C" __declspec(dllexport) void DeleteSettings(Settings *settings) {
-	delete settings;
+	delete settings; //destructor to prevent memory leaks
 }
 
 extern "C" __declspec(dllexport) int GetStudeerTijd(Settings * settings) {
@@ -27,6 +33,7 @@ extern "C" __declspec(dllexport) void SetPauzeTijd(Settings * settings, int pauz
 }
 
 extern "C" __declspec(dllexport) BSTR GetPathImage(Settings * settings) {
+	//converting and using BSTR as unmanaged datatype for string, C# knows it will recieve a BSTR.
 	return _com_util::ConvertStringToBSTR(settings->getPathImage().c_str());
 }
 

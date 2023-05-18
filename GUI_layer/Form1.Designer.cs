@@ -35,7 +35,7 @@ namespace GUI_layer
             this.components = new System.ComponentModel.Container();
             this.timedisplay = new System.Windows.Forms.Label();
             this.clock = new System.Windows.Forms.Timer(this.components);
-            this.startstop = new System.Windows.Forms.Button();
+            this.START_STOP_BUTTON = new System.Windows.Forms.Button();
             this.studytime = new System.Windows.Forms.DateTimePicker();
             this.pausetime = new System.Windows.Forms.DateTimePicker();
             this.settings = new System.Windows.Forms.Button();
@@ -45,9 +45,9 @@ namespace GUI_layer
             this.SELECT_IMAGE_BUTTON = new System.Windows.Forms.Button();
             this.AUTO_START_STUDY_CHECKBOX = new System.Windows.Forms.CheckBox();
             this.AUTO_START_BREAK_CHECK = new System.Windows.Forms.CheckBox();
-            this.confirmsettings = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
+            this.APPLY_TIMERS_BUTTON = new System.Windows.Forms.Button();
+            this.LABEL_AMOUNT_BLOCKS = new System.Windows.Forms.Label();
+            this.LABEL_MODE = new System.Windows.Forms.Label();
             this.settingsmenu.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -64,27 +64,26 @@ namespace GUI_layer
             this.timedisplay.TabIndex = 0;
             this.timedisplay.Text = "00:00:00";
             this.timedisplay.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.timedisplay.Click += new System.EventHandler(this.timedisplay_Click);
             // 
             // clock
             // 
             this.clock.Interval = 1000;
             this.clock.Tick += new System.EventHandler(this.clock_Tick);
             // 
-            // startstop
+            // START_STOP_BUTTON
             // 
-            this.startstop.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.startstop.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.startstop.FlatAppearance.BorderSize = 5;
-            this.startstop.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.startstop.Location = new System.Drawing.Point(592, 382);
-            this.startstop.Margin = new System.Windows.Forms.Padding(4);
-            this.startstop.Name = "startstop";
-            this.startstop.Size = new System.Drawing.Size(123, 45);
-            this.startstop.TabIndex = 1;
-            this.startstop.Text = "Start";
-            this.startstop.UseVisualStyleBackColor = true;
-            this.startstop.Click += new System.EventHandler(this.startstop_Click);
+            this.START_STOP_BUTTON.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.START_STOP_BUTTON.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.START_STOP_BUTTON.FlatAppearance.BorderSize = 5;
+            this.START_STOP_BUTTON.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.START_STOP_BUTTON.Location = new System.Drawing.Point(592, 382);
+            this.START_STOP_BUTTON.Margin = new System.Windows.Forms.Padding(4);
+            this.START_STOP_BUTTON.Name = "START_STOP_BUTTON";
+            this.START_STOP_BUTTON.Size = new System.Drawing.Size(123, 45);
+            this.START_STOP_BUTTON.TabIndex = 1;
+            this.START_STOP_BUTTON.Text = "Start";
+            this.START_STOP_BUTTON.UseVisualStyleBackColor = true;
+            this.START_STOP_BUTTON.Click += new System.EventHandler(this.START_STOP_BUTTON_Click);
             // 
             // studytime
             // 
@@ -131,7 +130,7 @@ namespace GUI_layer
             this.settingsmenu.Controls.Add(this.SELECT_IMAGE_BUTTON);
             this.settingsmenu.Controls.Add(this.AUTO_START_STUDY_CHECKBOX);
             this.settingsmenu.Controls.Add(this.AUTO_START_BREAK_CHECK);
-            this.settingsmenu.Controls.Add(this.confirmsettings);
+            this.settingsmenu.Controls.Add(this.APPLY_TIMERS_BUTTON);
             this.settingsmenu.Controls.Add(this.pausetime);
             this.settingsmenu.Controls.Add(this.studytime);
             this.settingsmenu.Location = new System.Drawing.Point(1163, 38);
@@ -143,7 +142,6 @@ namespace GUI_layer
             this.settingsmenu.TabStop = false;
             this.settingsmenu.Text = "Settings";
             this.settingsmenu.Visible = false;
-            this.settingsmenu.Enter += new System.EventHandler(this.settingsmenu_Enter);
             // 
             // CLEAR_BACKGROUND
             // 
@@ -173,7 +171,7 @@ namespace GUI_layer
             this.SELECT_IMAGE_BUTTON.TabIndex = 7;
             this.SELECT_IMAGE_BUTTON.Text = "Select image";
             this.SELECT_IMAGE_BUTTON.UseVisualStyleBackColor = true;
-            this.SELECT_IMAGE_BUTTON.Click += new System.EventHandler(this.button1_Click);
+            this.SELECT_IMAGE_BUTTON.Click += new System.EventHandler(this.SELECT_IMAGE_Click);
             // 
             // AUTO_START_STUDY_CHECKBOX
             // 
@@ -201,46 +199,44 @@ namespace GUI_layer
             this.AUTO_START_BREAK_CHECK.TabIndex = 5;
             this.AUTO_START_BREAK_CHECK.Text = "Auto start break";
             this.AUTO_START_BREAK_CHECK.UseVisualStyleBackColor = true;
-            this.AUTO_START_BREAK_CHECK.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
+            this.AUTO_START_BREAK_CHECK.CheckedChanged += new System.EventHandler(this.AUTO_START_BREAK_CHECKBOX_CheckedChanged);
             // 
-            // confirmsettings
+            // APPLY_TIMERS_BUTTON
             // 
-            this.confirmsettings.Location = new System.Drawing.Point(8, 241);
-            this.confirmsettings.Margin = new System.Windows.Forms.Padding(4);
-            this.confirmsettings.Name = "confirmsettings";
-            this.confirmsettings.Size = new System.Drawing.Size(122, 36);
-            this.confirmsettings.TabIndex = 4;
-            this.confirmsettings.Text = "Apply";
-            this.confirmsettings.UseVisualStyleBackColor = true;
-            this.confirmsettings.Click += new System.EventHandler(this.confirmsettings_Click);
+            this.APPLY_TIMERS_BUTTON.Location = new System.Drawing.Point(8, 241);
+            this.APPLY_TIMERS_BUTTON.Margin = new System.Windows.Forms.Padding(4);
+            this.APPLY_TIMERS_BUTTON.Name = "APPLY_TIMERS_BUTTON";
+            this.APPLY_TIMERS_BUTTON.Size = new System.Drawing.Size(122, 36);
+            this.APPLY_TIMERS_BUTTON.TabIndex = 4;
+            this.APPLY_TIMERS_BUTTON.Text = "Apply";
+            this.APPLY_TIMERS_BUTTON.UseVisualStyleBackColor = true;
+            this.APPLY_TIMERS_BUTTON.Click += new System.EventHandler(this.APPLY_TIMERS_BUTTON_Click);
             // 
-            // label1
+            // LABEL_AMOUNT_BLOCKS
             // 
-            this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(525, 197);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(240, 52);
-            this.label1.TabIndex = 6;
-            this.label1.Text = "#blok";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.label1.Click += new System.EventHandler(this.label1_Click);
+            this.LABEL_AMOUNT_BLOCKS.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.LABEL_AMOUNT_BLOCKS.BackColor = System.Drawing.Color.Transparent;
+            this.LABEL_AMOUNT_BLOCKS.Font = new System.Drawing.Font("Segoe UI", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LABEL_AMOUNT_BLOCKS.ForeColor = System.Drawing.Color.White;
+            this.LABEL_AMOUNT_BLOCKS.Location = new System.Drawing.Point(525, 197);
+            this.LABEL_AMOUNT_BLOCKS.Name = "LABEL_AMOUNT_BLOCKS";
+            this.LABEL_AMOUNT_BLOCKS.Size = new System.Drawing.Size(240, 52);
+            this.LABEL_AMOUNT_BLOCKS.TabIndex = 6;
+            this.LABEL_AMOUNT_BLOCKS.Text = "#blok";
+            this.LABEL_AMOUNT_BLOCKS.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // label2
+            // LABEL_MODE
             // 
-            this.label2.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label2.BackColor = System.Drawing.Color.Transparent;
-            this.label2.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(503, 148);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(296, 56);
-            this.label2.TabIndex = 7;
-            this.label2.Text = "Time to study";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.label2.Click += new System.EventHandler(this.label2_Click);
+            this.LABEL_MODE.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.LABEL_MODE.BackColor = System.Drawing.Color.Transparent;
+            this.LABEL_MODE.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LABEL_MODE.ForeColor = System.Drawing.Color.White;
+            this.LABEL_MODE.Location = new System.Drawing.Point(503, 148);
+            this.LABEL_MODE.Name = "LABEL_MODE";
+            this.LABEL_MODE.Size = new System.Drawing.Size(296, 56);
+            this.LABEL_MODE.TabIndex = 7;
+            this.LABEL_MODE.Text = "Time to study";
+            this.LABEL_MODE.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // GUI_studytimer
             // 
@@ -251,11 +247,11 @@ namespace GUI_layer
             this.BackColor = System.Drawing.Color.PowderBlue;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1312, 602);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.LABEL_MODE);
+            this.Controls.Add(this.LABEL_AMOUNT_BLOCKS);
             this.Controls.Add(this.settingsmenu);
             this.Controls.Add(this.settings);
-            this.Controls.Add(this.startstop);
+            this.Controls.Add(this.START_STOP_BUTTON);
             this.Controls.Add(this.timedisplay);
             this.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(4);
@@ -263,7 +259,6 @@ namespace GUI_layer
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "StudyTimer";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
-            this.Load += new System.EventHandler(this.GUI_studytimer_Load);
             this.settingsmenu.ResumeLayout(false);
             this.settingsmenu.PerformLayout();
             this.ResumeLayout(false);
@@ -276,19 +271,19 @@ namespace GUI_layer
 
         private System.Windows.Forms.Label timedisplay;
         private System.Windows.Forms.Timer clock;
-        private System.Windows.Forms.Button startstop;
+        private System.Windows.Forms.Button START_STOP_BUTTON;
         private System.Windows.Forms.DateTimePicker studytime;
         private System.Windows.Forms.DateTimePicker pausetime;
         private Button settings;
         private GroupBox settingsmenu;
-        private Button confirmsettings;
+        private Button APPLY_TIMERS_BUTTON;
         private CheckBox AUTO_START_BREAK_CHECK;
         private CheckBox AUTO_START_STUDY_CHECKBOX;
         private Button SELECT_IMAGE_BUTTON;
         private Button SELECT_SOUND;
         private Button CLEAR_BACKGROUND;
-        private Label label1;
-        private Label label2;
+        private Label LABEL_AMOUNT_BLOCKS;
+        private Label LABEL_MODE;
     }
 }
 

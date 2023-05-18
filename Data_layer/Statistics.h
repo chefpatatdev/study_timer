@@ -14,9 +14,9 @@ public:
 	int getBlocks() const;
 private:
 	void dump();
-	Json::Value json;
-	string path;
-	string date;
+	Json::Value json; //JSON object
+	string path; //path for JSON file
+	string date; //date for blocks reset
 	int blocks; //amount of blocks studied
 };
 
